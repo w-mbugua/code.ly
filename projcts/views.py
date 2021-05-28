@@ -1,6 +1,7 @@
 from django.shortcuts import render
 from django.views.generic import ListView, DetailView
 from django.views.generic.edit import DeleteView, UpdateView
+from django.urls import reverse_lazy
 
 from .models import Project
 
@@ -9,11 +10,16 @@ class ProjectListView(ListView):
     template_name = 'projcts/projects_list.html'
 
 class ProjectDetailView(DetailView):
-    pass
+    model = Project
+    template_name = 'projcts/project_details.html'
 
 
 class ProjectEditView(UpdateView):
-    pass
+    model = Project
+    fields = ('title', 'description',)
+    template_name = 'projcts/project_edit.html'
 
 class ProjectDeleteView(DeleteView):
-    pass
+    model = Project
+    template_name = 'projcts/project_delete.html'
+    success_url = 'projcts/project_list.html'
