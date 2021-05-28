@@ -14,6 +14,9 @@ from pathlib import Path
 from decouple import config, Csv
 import os
 import dj_database_url
+import cloudinary
+import cloudinary.uploader
+import cloudinary.api
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -35,9 +38,10 @@ ALLOWED_HOSTS = config('ALLOWED_HOSTS')
 
 INSTALLED_APPS = [
     'users.apps.UsersConfig',
-    'projects.apps.ProjectsConfig',
+    'projcts.apps.ProjctsConfig',
     'django.contrib.admin',
     'crispy_forms',
+    'cloudinary',
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
@@ -151,3 +155,11 @@ LOGIN_REDIRECT_URL = 'home'
 LOGOUT_REDIRECT_URL = 'login'
 
 CRISPY_TEMPLATE_PACK = 'bootstrap4'
+
+# Cloudinary
+
+cloudinary.config(
+  cloud_name = config('CLOUD_NAME'),
+  api_key = config('API_KEY'),
+  api_secret = config('API_SECRET')
+)
