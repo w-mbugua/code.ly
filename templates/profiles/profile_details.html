@@ -1,0 +1,11 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <h1>My Profile</h1>
+  <ul>
+    <li>{{object.user.username}}</li>
+    <li>{{object.user.location}}</li>
+    <li>{{object.user.occupation}}</li>
+ 
+  </ul>
+{% endblock %}
