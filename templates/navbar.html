@@ -23,7 +23,7 @@
               </div>
             
              <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-             
+             {% if user.is_authenticated %}
               <li class="nav-item">
                 <a class="nav-link" href="#">Home</a>
               </li>
@@ -34,13 +34,17 @@
                   <a class="nav-link" href="#">Profile</a>
                 </li>
                 <li class="nav-item">
-                  <a class="nav-link" href="#">Logout</a>
+                  <a class="nav-link" href="{% url 'logout'%}">Logout</a>
                 </li>
-             
+             {% else %}
                 <li class="nav-item">
-                  <a class="nav-link" href="#">Login</a>
+                  <a class="nav-link" href="{% url 'login'%}">Login</a>
                 </li>
-            
+                /
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'signup'%}">Register</a>
+                  </li>
+            {% endif %}
               </ul>
             </div>
           </nav>
