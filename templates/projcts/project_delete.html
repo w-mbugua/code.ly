@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <div class="container">
+        <div class="row">
+            <div class="col-md-3"></div>
+            <div style="margin-top: 5rem;" class="col-md-6">
+                <form action="" method="POST">
+                    {% csrf_token %}
+                    <p>Are you sure you want to delete "{{project.title}}"?</p>
+                    <button class="btn btn-lg btn-danger">Delete</button>
+                </form>
+            </div>
+            <div class="col-md-2"></div>
+        </div>
+    </div>
+{% endblock %}
