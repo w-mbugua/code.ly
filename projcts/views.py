@@ -1,9 +1,14 @@
 from django.shortcuts import render
 from django.views.generic import ListView, DetailView
-from django.views.generic.edit import DeleteView, UpdateView
+from django.views.generic.edit import DeleteView, UpdateView, CreateView
 from django.urls import reverse_lazy
 
 from .models import Project
+
+class ProjectCreateView(CreateView):
+    model = Project
+    template_name = 'projcts/new_project.html'
+    fields = '__all__'
 
 class ProjectListView(ListView):
     model = Project
