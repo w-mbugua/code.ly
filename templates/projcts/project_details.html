@@ -4,11 +4,8 @@
 {% block content %}
  
     <div class="container">
-        <div class="row">
-    {% for project in project_list%}
-       <div class="col-sm-3">
-        <div class="card">
-                
+
+        <div class="card">           
             {% cloudinary project.image class="card-image" %}
             <div class="card-body">
               <h5 class="card-title"><a href="{% url 'project_details' project.id %}">{{ project.title }}</a>&middot;
@@ -26,9 +23,7 @@
                 {% endif %}
               </div>
           </div>
-       </div>
-    {% endfor %}
-        </div>
+
     </div>
 
 {% endblock %}
