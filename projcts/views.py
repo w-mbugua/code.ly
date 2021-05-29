@@ -3,12 +3,18 @@ from django.views.generic import ListView, DetailView
 from django.views.generic.edit import DeleteView, UpdateView, CreateView
 from django.urls import reverse_lazy
 
-from .models import Project
+from .models import Project, Review
 
 class ProjectCreateView(CreateView):
     model = Project
     template_name = 'projcts/new_project.html'
     fields = '__all__'
+
+
+class ReviewCreateView(CreateView):
+    model = Review
+    fields = '__all__'
+    template_name = 'projcts/newreview.html'
 
 class ProjectListView(ListView):
     model = Project

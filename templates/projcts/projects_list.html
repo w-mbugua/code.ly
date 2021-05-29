@@ -12,9 +12,18 @@
             {% cloudinary project.image class="card-image" %}
             <div class="card-body">
               <h5 class="card-title"><a href="{% url 'project_details' project.id %}">{{ project.title }}</a>&middot;
-                <span class="text-muted">by {{ project.creator }} |
-                {{ project.date }}</span></h5>
-              <p class="card-text">{{ project.description}}</p>
+                <span>Rating: </span>
+                {% for rating in project.reviews.all %}
+                    <p>Reviewer: {{ rating.reviewer }}</p>
+                    <p>Design: {{rating.design }}</p>
+                    <p>Usability: {{rating.usability }}</p>
+                    <p>Content: {{rating.content }}</p>
+                    <p>Total: {{ rating.total_rating }}</p>
+                {% endfor %}
+                <p><p>Trial: {{project.get_design_rating }}</p></p>
+                <!-- <span class="text-muted">by {{ project.creator }} |
+                {{ project.date }}</span></h5> -->
+              <!-- <p class="card-text">{{ project.description}}</p> -->
               <br>
               <p><a href="{{project.link}}" target="_blank">Visit Website</a></p>
               
@@ -22,8 +31,9 @@
             <div class="card-footer text-center text-muted">
                 <a href="#" class="btn btn-sm btn-primary">Vote</a>
                 {% if project.creator == user %}
-                <a href="#" class="btn btn-sm btn-primary">Edit</a>
-                <a href="{% url 'project_delete' project.id %}" class="btn btn-sm btn-primary">Delete</a>
+                <a href="#" class="btn btn-sm btn-primary">Edit</a> |
+                <a href="{% url 'project_delete' project.id %}" class="btn btn-sm btn-primary">Delete</a> |
+                <a href="{% url 'newreview' project.id %}" class="btn btn-sm btn-primary">Add Review</a>
                 <!-- else vote -->
                 {% endif %}
               </div>
