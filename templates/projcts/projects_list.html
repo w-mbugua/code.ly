@@ -20,7 +20,9 @@
                     <p>Content: {{rating.content }}</p>
                     <p>Total: {{ rating.total_rating }}</p>
                 {% endfor %}
-                <p><p>Trial: {{project.get_design_rating }}</p></p>
+                <p>Average Rating in design: {{project.get_design_rating }}</p>
+                <p>Total Usability: {{project.get_usability_rating }}</p>
+                <p>Total Content: {{project.get_content_rating }}</p>
                 <!-- <span class="text-muted">by {{ project.creator }} |
                 {{ project.date }}</span></h5> -->
               <!-- <p class="card-text">{{ project.description}}</p> -->

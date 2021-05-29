@@ -21,10 +21,26 @@ class Project(models.Model):
     def get_design_rating(self):
         reviews = self.reviews.all()
         total_design = 0
+        avg = 0
         for review in reviews:
             total_design += review.design
-        return total_design
-        
+            avg = total_design / reviews.count()
+        return avg
+
+    def get_usability_rating(self):
+        reviews = self.reviews.all()
+        total_usability = 0
+        for review in reviews:
+            total_usability += review.usability
+        return total_usability
+    
+    def get_content_rating(self):
+        reviews = self.reviews.all()
+        total_content = 0
+        for review in reviews:
+            total_content += review.content
+        return total_content
+
 
 
 RATING_CHOICES = ((1, '1'),(2, '2'),(3, '3'),(4, '4'),(5, '5'),(6, '6'), (7, '7'), (8, '8'), (9, '9'), (10, '10'))
