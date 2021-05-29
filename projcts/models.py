@@ -30,16 +30,20 @@ class Project(models.Model):
     def get_usability_rating(self):
         reviews = self.reviews.all()
         total_usability = 0
+        avg = 0
         for review in reviews:
             total_usability += review.usability
-        return total_usability
+            avg = total_usability / reviews.count()
+        return avg
     
     def get_content_rating(self):
         reviews = self.reviews.all()
         total_content = 0
+        avg = 0
         for review in reviews:
             total_content += review.content
-        return total_content
+            avg = total_content / reviews.count()
+        return avg
 
 
 
