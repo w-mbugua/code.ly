@@ -15,3 +15,10 @@ class ProfileListView(ListView):
 class ProfileDetailView(DetailView):
     model = Profile
     template_name = 'profiles/profile_details.html'
+
+def my_profile(request, username): 
+    username = request.user.username
+    profile = Profile.objects.filter(user__username=username)
+    print("**********************")
+    print('PROFILE:',profile)
+    return render(request, 'profiles/user_profile.html', {'user_profile': profile})

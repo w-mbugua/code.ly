@@ -1,0 +1,14 @@
+.card-details {
+    max-width: 70%;
+    max-height: 50%;
+}
+.btn-vote {
+    border-radius: 40%;
+    background-color: white;
+    color: black;
+    margin: .1rem;
+}
+.design-box, .usability-box, .content-box {
+    margin-bottom: 1rem;
+    display: flex;
+}
