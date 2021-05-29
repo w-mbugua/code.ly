@@ -13,16 +13,17 @@
             <div class="card-body">
               <h5 class="card-title"><a href="{% url 'project_details' project.id %}">{{ project.title }}</a>&middot;
                 <span>Rating: </span>
-                {% for rating in project.reviews.all %}
+                <!-- {% for rating in project.reviews.all %}
                     <p>Reviewer: {{ rating.reviewer }}</p>
                     <p>Design: {{rating.design }}</p>
                     <p>Usability: {{rating.usability }}</p>
                     <p>Content: {{rating.content }}</p>
                     <p>Total: {{ rating.total_rating }}</p>
-                {% endfor %}
+                {% endfor %} -->
                 <p>Average Rating in design: {{project.get_design_rating }}</p>
                 <p>Average Rating in Usability: {{project.get_usability_rating }}</p>
                 <p>Average Rating in Content: {{project.get_content_rating }}</p>
+                <p>{{project.get_reviews }}</p>
                 <!-- <span class="text-muted">by {{ project.creator }} |
                 {{ project.date }}</span></h5> -->
               <!-- <p class="card-text">{{ project.description}}</p> -->
@@ -31,11 +32,11 @@
               
             </div>
             <div class="card-footer text-center text-muted">
-                <a href="#" class="btn btn-sm btn-primary">Vote</a>
+                <a href="{% url 'newreview' project.id %}" class="btn btn-sm btn-primary">Vote</a>
                 {% if project.creator == user %}
-                <a href="#" class="btn btn-sm btn-primary">Edit</a> |
+                <a href="{% url 'project_edit' project.id %}" class="btn btn-sm btn-primary">Edit</a> |
                 <a href="{% url 'project_delete' project.id %}" class="btn btn-sm btn-primary">Delete</a> |
-                <a href="{% url 'newreview' project.id %}" class="btn btn-sm btn-primary">Add Review</a>
+              
                 <!-- else vote -->
                 {% endif %}
               </div>

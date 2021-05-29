@@ -18,17 +18,29 @@ class Project(models.Model):
     def get_absolute_url(self):
         return reverse('project_details', args=[str(self.id)])
     
-    def get_design_rating(self):
+    def get_reviews(self):
         reviews = self.reviews.all()
+        reviewers = []
+        for review in reviews:
+            if review.reviewer in reviewers:
+                review.delete()
+            else:
+                reviewers.append(review.reviewer)
+        return reviews
+    
+    def get_design_rating(self):
+        reviews = self.get_reviews()
         total_design = 0
         avg = 0
+        r = []
         for review in reviews:
             total_design += review.design
             avg = total_design / reviews.count()
+            r.append(review.reviewer)
         return avg
 
     def get_usability_rating(self):
-        reviews = self.reviews.all()
+        reviews = self.get_reviews()
         total_usability = 0
         avg = 0
         for review in reviews:
@@ -37,14 +49,15 @@ class Project(models.Model):
         return avg
     
     def get_content_rating(self):
-        reviews = self.reviews.all()
+        reviews = self.get_reviews()
         total_content = 0
         avg = 0
         for review in reviews:
             total_content += review.content
             avg = total_content / reviews.count()
         return avg
-
+    
+        
 
 
 RATING_CHOICES = ((1, '1'),(2, '2'),(3, '3'),(4, '4'),(5, '5'),(6, '6'), (7, '7'), (8, '8'), (9, '9'), (10, '10'))
@@ -65,3 +78,5 @@ class Review(models.Model):
     
     def total_rating(self):
         return self.design + self.usability + self.content
+    
+
