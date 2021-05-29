@@ -35,3 +35,11 @@ class ProjectDeleteView(DeleteView):
     model = Project
     template_name = 'projcts/project_delete.html'
     success_url = reverse_lazy('project_list')
+
+def project_search(request):
+    keyword = request.GET.get('searchword')
+    results = Project.search_project(keyword)
+    message = f"{keyword}".capitalize()
+    return render(request, 'projcts/search.html', {"message": message, "results": results})
+
+

@@ -16,8 +16,8 @@
                 <span class="navbar-toggler-icon"></span>
               </button>
               <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                <form class="d-flex" action="#">
-                  <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search" name="image">
+                <form class="d-flex" action="{% url 'search' %}">
+                  <input class="form-control ml-2" type="search" placeholder="Search" aria-label="Search" name="searchword">
                   <button class="btn btn-outline-success" type="submit"><i class="fa fa-search"></i></button>
                 </form>
               </div>

@@ -57,8 +57,12 @@ class Project(models.Model):
             avg = total_content / reviews.count()
         return avg
     
+    @classmethod
+    def search_project(cls, word):
+        obj = cls.objects.filter(title__icontains=word)
+        return obj
+    
         
-
 
 RATING_CHOICES = ((1, '1'),(2, '2'),(3, '3'),(4, '4'),(5, '5'),(6, '6'), (7, '7'), (8, '8'), (9, '9'), (10, '10'))
 
