@@ -20,6 +20,9 @@ class ProjectModelTests(TestCase):
         self.assertEqual(self.project.description, 'testing project')
         self.assertEqual(self.project.link, 'noir.com')
         self.assertEqual(self.project.creator.username, 'Joe')
+    
+    def test_get_reviews(self):
+        self.assertEqual(self.project.get_reviews()[0], self.review1)
 
 class ReviewModelTests(TestCase):
     def setUp(self):
