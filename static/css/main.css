@@ -148,4 +148,7 @@ p, small {
     .sidenav {padding-top: 15px;}
     .sidenav a {font-size: 18px;}
   }
+  .detail-header {
+    color: #40434E;
+  }
   
