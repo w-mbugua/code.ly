@@ -23,6 +23,15 @@ class ProjectModelTests(TestCase):
     
     def test_get_reviews(self):
         self.assertEqual(self.project.get_reviews()[0], self.review1)
+    
+    def test_get_design_rating(self):
+        self.assertEqual(self.project.get_design_rating(), self.review1.design)
+    
+    def test_get_usability_rating(self):
+        self.assertEqual(self.project.get_usability_rating(), self.review1.usability)
+    
+    def test_get_content_rating(self):
+        self.assertEqual(self.project.get_content_rating(), self.review1.content)
 
 class ReviewModelTests(TestCase):
     def setUp(self):
