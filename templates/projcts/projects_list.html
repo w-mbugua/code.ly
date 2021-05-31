@@ -4,29 +4,18 @@
 {% block content %}
  
     <div class="container">
-        <div class="row">
+        <div class="row row1">
     {% for project in project_list%}
-       <div class="col-sm-3">
-        <div class="card">
+       <div class="col-md-4">
+        <div class="card" style="width: 400px;">
                 
             {% cloudinary project.image class="card-image" %}
             <div class="card-body">
-              <h5 class="card-title"><a href="{% url 'project_details' project.id %}">{{ project.title }}</a>&middot;
-                <span>Rating: </span>
-                <!-- {% for rating in project.reviews.all %}
-                    <p>Reviewer: {{ rating.reviewer }}</p>
-                    <p>Design: {{rating.design }}</p>
-                    <p>Usability: {{rating.usability }}</p>
-                    <p>Content: {{rating.content }}</p>
-                    <p>Total: {{ rating.total_rating }}</p>
-                {% endfor %} -->
-                <p>Average Rating in design: {{project.get_design_rating }}</p>
-                <p>Average Rating in Usability: {{project.get_usability_rating }}</p>
-                <p>Average Rating in Content: {{project.get_content_rating }}</p>
-                <p>{{project.get_reviews }}</p>
-                <!-- <span class="text-muted">by {{ project.creator }} |
-                {{ project.date }}</span></h5> -->
-              <!-- <p class="card-text">{{ project.description}}</p> -->
+              <h6 class="card-title"><a href="{% url 'project_details' project.id %}">{{ project.title }}</a>&middot;
+                <small class="text-muted">by {{ project.creator }} |
+                    {{ project.pub_date|date:"M Y" }}</small>
+            </h6>
+              <p class="card-text">{{ project.description|truncatechars:100 }}</p>
               <br>
               <p><a href="{{project.link}}" target="_blank">Visit Website</a></p>
               

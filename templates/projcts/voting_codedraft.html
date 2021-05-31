@@ -58,3 +58,21 @@
       </form>
     </div>
   </div>
+
+<!-- other -->
+ {% for rating in project.reviews.all %}
+                    <p>Reviewer: {{ rating.reviewer }}</p>
+                    <p>Design: {{rating.design }}</p>
+                    <p>Usability: {{rating.usability }}</p>
+                    <p>Content: {{rating.content }}</p>
+                    <p>Total: {{ rating.total_rating }}</p>
+                {% endfor %} 
+
+                
+
+<span>Rating: </span>
+
+<p>Average Rating in design: {{project.get_design_rating }}</p>
+<p>Average Rating in Usability: {{project.get_usability_rating }}</p>
+<p>Average Rating in Content: {{project.get_content_rating }}</p>
+<p>{{project.get_reviews }}</p>
