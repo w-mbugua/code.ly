@@ -2,8 +2,11 @@ from django.shortcuts import render
 from django.views.generic import ListView, DetailView
 from django.views.generic.edit import DeleteView, UpdateView, CreateView
 from django.urls import reverse_lazy
+from rest_framework.response import Response
+from rest_framework.views import APIView
 
 from .models import Project, Review
+from .serializer import ProjectSerializer
 
 class ProjectCreateView(CreateView):
     model = Project
@@ -41,5 +44,11 @@ def project_search(request):
     results = Project.search_project(keyword)
     message = f"{keyword}".capitalize()
     return render(request, 'projcts/search.html', {"message": message, "results": results})
+
+class ProjectsList(APIView):
+    def get(self, request):
+        projects = Project.objects.all()
+        serializers = ProjectSerializer(projects, many=True)
+        return Response(serializers.data)
 
 
