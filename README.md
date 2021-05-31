@@ -1,8 +1,8 @@
-# ![instaApp](https://github.com/JoyMbugua/code.ly/blob/master/static/img/awards.png)
+# ![AwardsApp](https://github.com/JoyMbugua/code.ly/blob/master/staticfiles/img/awardsapp.png)
 
-# AwardsApp
+# Awards App
 
-A web that allows users to upload images of their websites and get ratings on:
+A web that allows users to upload images and links to their websites and get ratings on:
   1. Design
   2. Usability
   3. Content
@@ -14,7 +14,7 @@ A user can:
 * Rate/ review other users' projects
 * Search for projects 
 * View projects overall score
-* View my profile page
+* View profiles
 
 ## API Endpoints
 | Task | View| Response |
