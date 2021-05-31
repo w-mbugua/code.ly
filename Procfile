@@ -1,1 +1,1 @@
-web: gunicorn codely-awards.wsgi --log-file -
+web: gunicorn codely_awards.wsgi --log-file -
