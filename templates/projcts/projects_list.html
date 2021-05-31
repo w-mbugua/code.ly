@@ -12,7 +12,7 @@
             {% cloudinary project.image class="card-image" %}
             <div class="card-body">
               <h6 class="card-title"><a href="{% url 'project_details' project.id %}">{{ project.title }}</a>&middot;
-                <small class="text-muted">by {{ project.creator }} |
+                <small class="text-muted">by <a href="{% url 'profile_details' project.creator.id %}">{{ project.creator }}</a> |
                     {{ project.pub_date|date:"M Y" }}</small>
             </h6>
               <p class="card-text">{{ project.description|truncatechars:100 }}</p>

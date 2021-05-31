@@ -9,7 +9,7 @@ class Project(models.Model):
     description = models.TextField()
     image = CloudinaryField('image')
     link = models.CharField(max_length=100)
-    creator = models.ForeignKey(get_user_model(), on_delete=models.CASCADE)
+    creator = models.ForeignKey(get_user_model(), on_delete=models.CASCADE, related_name='projects')
     pub_date = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):

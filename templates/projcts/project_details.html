@@ -19,35 +19,39 @@
       </div>
       <br>
       <div class="row">
-        <div class="col-md-10">
+        <div class="col-md-8">
+          <!-- new card -->
 
-          <div class="card card-details">           
+          <div class="card" style="width: 100%;">
             {% cloudinary project.image class="card-image" %}
             <div class="card-body">
-              <h5 class="card-title"><a href="{% url 'project_details' project.id %}">{{ project.title }}</a>&middot;
-                <span class="text-muted">by {{ project.creator }} |
-                {{ project.date }}</span></h5>
+              <h5 class="card-title"><a href="{% url 'project_details' project.id %}">{{ project.title }}</a></h5>
               <p class="card-text">{{ project.description}}</p>
-              <div class="voting-box">
-                <div class="design-box">
-                  
-                </div>
-              </div>
-              
             </div>
-            <br>
-            <br>
-            <p></p>
-            <div class="card-footer text-center text-muted">
-               
-                {% if project.creator == user %}
-                <a href="{% url 'project_edit' project.id %}" class="btn btn-sm btn-primary">Edit</a>
-                <a href="#" class="btn btn-sm btn-primary">Delete</a>
-                {% else %}
-                <a href="{% url 'newreview' project.id %}" class="btn btn-sm btn-primary">Vote</a>
-                {% endif %}
-              </div>
+            <ul class="list-group list-group-flush">
+              <li class="list-group-item">
+                <span class="text-muted">by {{ project.creator }} |
+                  {{ project.date }}</span></h5>
+              </li>
+              <li class="list-group-item">A second item</li>
+              <li class="list-group-item">A third item</li>
+            </ul>
+            <div class="card-body">
+              <a href="{% url 'newreview' project.id %}" class="btn btn-sm btn-primary">Discuss The Project</a>
+              {% if project.creator == user %}
+
+              <a href="{% url 'project_edit' project.id %}" class="btn btn-sm btn-primary">Edit</a>
+              <a href="#" class="btn btn-sm btn-primary">Delete</a>
+              {% else %}
+              <a href="{% url 'newreview' project.id %}" class="btn btn-sm btn-primary">Vote</a>
+              {% endif %}
+            </div>
+            <div class="comment-box">
+              <p class="text-center text-muted">Comments</p>
+            </div>
           </div>
+          <!-- end -->
+
         </div>
         <div class="col-md-2">
           <h2>Ratings:</h2>
