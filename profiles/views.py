@@ -1,22 +1,15 @@
 from rest_framework import serializers
-from profiles.models import Profile
+from django.contrib.auth.mixins import LoginRequiredMixin
 from django.shortcuts import render
 from django.views.generic import ListView, DetailView, UpdateView
 from rest_framework.response import Response
 from rest_framework.views import APIView
+from django.contrib.auth.decorators import login_required
 
 from .models import Profile
 from .serializer import ProfileSerializer
 
-class ProfileListView(ListView):
-    model = Profile
-    template_name = 'profiles/profile_list.html'
-    context_object_name = 'profiles'
-
-    def get_queryset(self):
-        return Profile.objects.all().exclude(user=self.request.user)
-
-class ProfileDetailView(DetailView):
+class ProfileDetailView(LoginRequiredMixin, DetailView):
     model = Profile
     template_name = 'profiles/profile_details.html'
 
@@ -25,6 +18,15 @@ class ProfileEditView(UpdateView):
     fields = '__all__'
     template_name = 'profiles/profile_edit.html'
 
+class ProfileListView(LoginRequiredMixin, ListView):
+    model = Profile
+    template_name = 'profiles/profile_list.html'
+    context_object_name = 'profiles'
+
+    def get_queryset(self):
+        return Profile.objects.all().exclude(user=self.request.user)
+
+@login_required
 def my_profile(request, username): 
     username = request.user.username
     profile = Profile.objects.filter(user__username=username)

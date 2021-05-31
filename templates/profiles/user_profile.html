@@ -13,11 +13,14 @@
             {% else %}
             <img src="https://www.gravatar.com/avatar/8d004e48b85a0eec7f1027a206f67b9d?s=328&d=identicon&r=PG&f=1" alt="placeholder avatar" class="rounded-circle prof-avi">
             {% endif %}
-            <h1 class="card-header">{{user.username}}</h1>
+            <h1 class="card-header">
+              {{user.username}} <br>
+              <small class="bio">{{user.profile.bio}}</small>
+
+            </h1>
+           
           </div>
           <div class="card-body">
-            
-            <p class="card-text">{{user.profile.bio}}</p>
             <div class="seperator">
                 <h1>Awards: </h1>
             </div>
@@ -39,24 +42,15 @@
                     </div>
                   </div>
                   {% empty %}
-                  <p>This profile has no submitted project yet</p>
+                  <p><a href="{% url 'new_project' %}">Submit a project</a></p>
                   {% endfor %}
                  
                 </div>
               </div>
 
             </div>
-            <hr>
-            <div class="contct-details">
-              <h3>About {{object.user.username}}</h3>
-              <ul>
-                <li></li>
-                <li><strong>Location:</strong>{{object.user.location}}</li>
-                <li><strong>Occupation:</strong>{{object.user.occupation}}</li>
-                <li><strong>Email:</strong></li>
-             
-              </ul>
-            </div>
+        
+           
           </div>
           <!-- body -->
         </div>

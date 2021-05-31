@@ -13,15 +13,18 @@
             <div class="row">
               <div class="col-md-6">
                 <h3 class="ml-3"><a class="detail-header" href="{% url 'project_details' project.id %}">{{ project.title }}</a></h3>
+                <br>
                 <div class="rating-headers">
+                  <p>Average Rating: </p>
                   <p>Design: {{ project.get_design_rating }}</p>
                   <p>Usability: {{ project.get_usability_rating}}</p>
                   <p>Content: {{ project.get_content_rating}}</p>
                 </div>
               </div>
               <div class="col-md-4">
-                <button class="btn btn-sm btn-outline-danger">Like</button>
+               
               </div>
+              <!-- /like -->
           </div>
           </div>
 
@@ -34,13 +37,11 @@
             <ul class="list-group list-group-flush">
               <li class="list-group-item">
                 <span class="text-muted">by {{ project.creator }} |
-                  {{ project.date }}</span></h5>
+                  {{ project.pub_date|date:"M Y" }}</span></h5>
               </li>
-              <li class="list-group-item">A second item</li>
-              <li class="list-group-item">A third item</li>
             </ul>
             <div class="card-body">
-              <a href="{% url 'newreview' project.id %}" class="btn btn-sm btn-primary">Discuss The Project</a>
+            
               {% if project.creator == user %}
 
               <a href="{% url 'project_edit' project.id %}" class="btn btn-sm btn-primary">Edit</a>
@@ -50,14 +51,15 @@
               {% endif %}
             </div>
             <div class="comment-box">
-              <p class="text-center text-muted">Comments</p>
+             
             </div>
           </div>
           <!-- end -->
 
         </div>
         <div class="col-md-2">
-          <h2>Ratings:</h2>
+          <h2>Panelists:</h2>
+          <br>
           <!-- table starts -->
           <table class="table table-striped">
             <thead>
@@ -86,5 +88,4 @@
     </div>
 
 {% endblock %}
-{% block scripts %}
-{% endblock %}
+

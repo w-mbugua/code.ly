@@ -1,4 +1,6 @@
 from django.shortcuts import render
+from django.http import JsonResponse
+from django.contrib.auth.mixins import LoginRequiredMixin
 from django.views.generic import ListView, DetailView
 from django.views.generic.edit import DeleteView, UpdateView, CreateView
 from django.urls import reverse_lazy
@@ -8,16 +10,24 @@ from rest_framework.views import APIView
 from .models import Project, Review
 from .serializer import ProjectSerializer
 
-class ProjectCreateView(CreateView):
+class ProjectCreateView(LoginRequiredMixin, CreateView):
     model = Project
     template_name = 'projcts/new_project.html'
-    fields = '__all__'
+    fields = ('title', 'description', 'image', 'link',)
+
+    def form_valid(self, form):
+        form.instance.creator = self.request.user
+        return super().form_valid(form)
 
 
-class ReviewCreateView(CreateView):
+class ReviewCreateView(LoginRequiredMixin, CreateView):
     model = Review
-    fields = '__all__'
+    fields = ('project', 'design', 'usability', 'content',)
     template_name = 'projcts/newreview.html'
+
+    def form_valid(self, form):
+        form.instance.reviewer = self.request.user
+        return super().form_valid(form)
 
 class ProjectListView(ListView):
     model = Project
@@ -50,5 +60,6 @@ class ProjectsList(APIView):
         projects = Project.objects.all()
         serializers = ProjectSerializer(projects, many=True)
         return Response(serializers.data)
+
 
 

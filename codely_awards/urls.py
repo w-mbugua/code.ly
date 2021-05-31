@@ -15,6 +15,8 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
+from projcts.views import ProjectsList
+from profiles.views import ProfileList
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -22,4 +24,6 @@ urlpatterns = [
     path('user/', include('users.urls')),
     path('', include('projcts.urls')),
     path('profiles/', include('profiles.urls')),
+    path('api/projects/', ProjectsList.as_view()),
+    path('api/profiles/', ProfileList.as_view())
 ]

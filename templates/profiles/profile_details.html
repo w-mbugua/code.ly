@@ -13,18 +13,23 @@
             {% else %}
             <img src="https://www.gravatar.com/avatar/8d004e48b85a0eec7f1027a206f67b9d?s=328&d=identicon&r=PG&f=1" alt="placeholder avatar" class="rounded-circle prof-avi">
             {% endif %}
-            <h1 class="card-header">{{object}}</h1>
+            <h1 class="card-header">
+              {{object}} <br>
+              <small class="bio">{{object.bio}}</small>
+
+            </h1>
+          
           </div>
           <div class="card-body">
             
-            <p class="card-text">{{object.bio}}</p>
+           
             <div class="seperator">
                 <h1>Awards: </h1>
             </div>
             {% if object.user == user %}
             <a href="{% url 'profile_update' %}" class="btn btn-primary">Edit Profile</a>
             {% endif %}
-            <hr>
+            
 
             <div id="content-box">
               <div class="container">

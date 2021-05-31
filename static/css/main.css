@@ -1,6 +1,9 @@
 body {
     background-color: #ececec;
 }
+nav{
+  background-color: white;
+}
 .card-details {
     max-width: 70%;
     max-height: 50%;
@@ -34,6 +37,7 @@ body {
 }
 nav, h1, h2, h3, h4, h5, h6 {
     font-family: 'Limelight', cursive;
+    letter-spacing: 3px;
 }
 nav a, .logo{
     font-size: 2rem;
@@ -59,6 +63,11 @@ p, small {
     background-image: url('https://images.pexels.com/photos/1260727/pexels-photo-1260727.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940');
     background-size: contain;
     width: 100%;
+    display: none;
+}
+.bio {
+  font-style: italic;
+  font-size: 1.3rem;
 }
 .prof-display-img {
     object-fit: contain;

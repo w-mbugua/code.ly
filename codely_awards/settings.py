@@ -14,6 +14,7 @@ from pathlib import Path
 from decouple import config, Csv
 import os
 import dj_database_url
+import django_heroku
 import cloudinary
 import cloudinary.uploader
 import cloudinary.api
@@ -37,6 +38,7 @@ ALLOWED_HOSTS = config('ALLOWED_HOSTS')
 # Application definition
 
 INSTALLED_APPS = [
+    'whitenoise.runserver_nostatic',
     'users.apps.UsersConfig',
     'projcts.apps.ProjctsConfig',
     'profiles.apps.ProfilesConfig',
@@ -53,6 +55,7 @@ INSTALLED_APPS = [
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
+    'whitenoise.middleware.WhiteNoiseMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
@@ -143,7 +146,7 @@ USE_TZ = True
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/3.2/howto/static-files/
-
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 STATIC_URL = '/static/'
 
 STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static')]
@@ -167,3 +170,8 @@ cloudinary.config(
   api_key = config('API_KEY'),
   api_secret = config('API_SECRET')
 )
+
+# Simplified static file serving.
+# https://warehouse.python.org/project/whitenoise/
+
+STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'

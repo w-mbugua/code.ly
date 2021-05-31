@@ -12,6 +12,8 @@ class Project(models.Model):
     creator = models.ForeignKey(get_user_model(), on_delete=models.CASCADE, related_name='projects')
     pub_date = models.DateTimeField(auto_now_add=True)
 
+
+
     def __str__(self):
         return self.title
 
@@ -35,7 +37,7 @@ class Project(models.Model):
         r = []
         for review in reviews:
             total_design += review.design
-            avg = total_design / reviews.count()
+            avg = int(total_design / reviews.count())
             r.append(review.reviewer)
         return avg
 
@@ -45,7 +47,7 @@ class Project(models.Model):
         avg = 0
         for review in reviews:
             total_usability += review.usability
-            avg = total_usability / reviews.count()
+            avg = int(total_usability / reviews.count())
         return avg
     
     def get_content_rating(self):
@@ -54,7 +56,7 @@ class Project(models.Model):
         avg = 0
         for review in reviews:
             total_content += review.content
-            avg = total_content / reviews.count()
+            avg = int(total_content / reviews.count())
         return avg
     
     @classmethod

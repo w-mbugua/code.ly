@@ -1,0 +1,1 @@
+web: gunicorn codely-awards.wsgi --log-file -
