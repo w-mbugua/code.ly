@@ -10,29 +10,52 @@
 <body>
     <div id="header">
         <nav class="navbar navbar-expand-lg">
+          <div id="mySidenav" class="sidenav">
+            <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+            <ul>
+              {% if user.is_authenticated %}
+               <li class="nav-item">
+                 <a class="nav-link" href="{% url 'project_list' %}">Home</a>
+               </li>
+               <li class="ms-2 nav-item">
+                   <a class="nav-link" href="{% url 'new_project' %}">Add</a>
+                 </li>
+                 <li class="ms-2 nav-item">
+                   <a class="nav-link" href="{% url 'user_profile' user%}">Profile</a>
+                 </li>
+                 <li class="nav-item">
+                   <a class="nav-link" href="{% url 'logout'%}">Logout</a>
+                 </li>
+              {% else %}
+                 <li class="nav-item">
+                   <a class="nav-link" href="{% url 'login'%}">Login</a>
+                 </li>
+                 /
+                 <li class="nav-item">
+                     <a class="nav-link" href="{% url 'signup'%}">Register</a>
+                   </li>
+             {% endif %}
+               </ul>
+          </div>
+        
+          <div id="main">
+            <span style="font-size:30px;cursor:pointer" onclick="openNav()">&#9776;</span>
+          </div>
             <div class="container-fluid">
               <a class="navbar-brand logo" href="#">Code.ly Awards</a>
               <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
               </button>
               <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                <form class="d-flex" action="{% url 'search' %}">
+                <form class="ml-5 d-flex" action="{% url 'search' %}">
                   <input class="form-control ml-2" type="search" placeholder="Search" aria-label="Search" name="searchword">
-                  <button class="btn btn-outline-success" type="submit"><i class="fa fa-search"></i></button>
+                  <button class="btn btn-outline-secondary" type="submit"><i class="fa fa-search"></i></button>
                 </form>
               </div>
             
              <ul class="navbar-nav me-auto mb-2 mb-lg-0">
              {% if user.is_authenticated %}
-              <li class="nav-item">
-                <a class="nav-link" href="{% url 'project_list' %}">Home</a>
-              </li>
-              <li class="ms-2 nav-item">
-                  <a class="nav-link" href="{% url 'new_project' %}">Add</a>
-                </li>
-                <li class="ms-2 nav-item">
-                  <a class="nav-link" href="{% url 'user_profile' user%}">Profile</a>
-                </li>
+              
                 <li class="nav-item">
                   <a class="nav-link" href="{% url 'logout'%}">Logout</a>
                 </li>
@@ -40,7 +63,7 @@
                 <li class="nav-item">
                   <a class="nav-link" href="{% url 'login'%}">Login</a>
                 </li>
-                /
+                
                 <li class="nav-item">
                     <a class="nav-link" href="{% url 'signup'%}">Register</a>
                   </li>

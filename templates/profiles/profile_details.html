@@ -16,8 +16,11 @@
             <h1 class="card-header">{{object}}</h1>
           </div>
           <div class="card-body">
-            <h5 class="card-title">Timeline</h5>
+            
             <p class="card-text">{{object.bio}}</p>
+            <div class="seperator">
+                <h1>Awards: </h1>
+            </div>
             {% if ovject.user == user %}
             <a href="#" class="btn btn-primary">Edit Profile</a>
             {% endif %}
@@ -25,6 +28,7 @@
 
             <div id="content-box">
               <div class="container">
+                <!-- <h5 class="card-title">Timeline</h5> -->
                 <div class="row">
                   
                   {% for project in object.user.projects.all %}
@@ -42,6 +46,7 @@
               </div>
 
             </div>
+            <hr>
             <div class="contct-details">
               <h3>About {{object.user.username}}</h3>
               <ul>
