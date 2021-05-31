@@ -34,7 +34,7 @@
                 <!-- <h5 class="card-title">Timeline</h5> -->
                 <div class="row">
                   
-                  {% for project in object.user.projects.all %}
+                  {% for project in user.projects.all %}
                   <div class="container-img col-md-6">
                     {% cloudinary project.image class="prof-display-img" %}
                     <div class="middle">
