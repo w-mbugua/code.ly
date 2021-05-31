@@ -1,5 +1,5 @@
 from django.test import TestCase
-from .models import Project
+from .models import Project, Review
 from django.contrib.auth import get_user_model
 
 
@@ -7,7 +7,11 @@ class ProjectModelTests(TestCase):
     def setUp(self):
         self.user = get_user_model().objects.create_user(username='Joe', email='jdoe@anon.com', password='bananas')
         self.project = Project.objects.create(title='project noir', description='testing project', link='noir.com', creator=self.user)
+        self.review1 = Review.objects.create(project = self.project, reviewer = self.user, design=10, usability=9, content=10)
     
+    def test_instanciation(self):
+        self.assertTrue(isinstance(self.project, Project))
+
     def test_toString(self):
         self.assertEqual(str(self.project), self.project.title)
     
@@ -17,4 +21,16 @@ class ProjectModelTests(TestCase):
         self.assertEqual(self.project.link, 'noir.com')
         self.assertEqual(self.project.creator.username, 'Joe')
 
+class ReviewModelTests(TestCase):
+    def setUp(self):
+        self.user = get_user_model().objects.create_user(username='newuser', email='user@testing.com', password='testing')
+        self.project = Project.objects.create(title='test project', description="new project alert", link='project.com', creator=self.user)
+        
+        self.review = Review.objects.create(project = self.project, reviewer=self.user, design=10, usability=9, content=10)
+
+    def test_instanciation(self):
+        self.assertTrue(isinstance(self.review, Review))
+    
+    def test_toString(self):
+        self.assertEqual(str(self.review), f"{self.review.project} - {self.review.reviewer}")
 
