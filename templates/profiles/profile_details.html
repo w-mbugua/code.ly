@@ -21,8 +21,8 @@
             <div class="seperator">
                 <h1>Awards: </h1>
             </div>
-            {% if ovject.user == user %}
-            <a href="#" class="btn btn-primary">Edit Profile</a>
+            {% if object.user == user %}
+            <a href="{% url 'profile_update' %}" class="btn btn-primary">Edit Profile</a>
             {% endif %}
             <hr>
 

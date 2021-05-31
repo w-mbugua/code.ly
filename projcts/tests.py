@@ -23,6 +23,7 @@ class ProjectModelTests(TestCase):
     
     def test_get_reviews(self):
         self.assertEqual(self.project.get_reviews()[0], self.review1)
+        self.assertTrue(len(self.project.get_reviews()) != 0)
     
     def test_get_design_rating(self):
         self.assertEqual(self.project.get_design_rating(), self.review1.design)

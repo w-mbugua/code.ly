@@ -1,7 +1,7 @@
 from rest_framework import serializers
 from profiles.models import Profile
 from django.shortcuts import render
-from django.views.generic import ListView, DetailView
+from django.views.generic import ListView, DetailView, UpdateView
 from rest_framework.response import Response
 from rest_framework.views import APIView
 
@@ -19,6 +19,11 @@ class ProfileListView(ListView):
 class ProfileDetailView(DetailView):
     model = Profile
     template_name = 'profiles/profile_details.html'
+
+class ProfileEditView(UpdateView):
+    model = Profile
+    fields = '__all__'
+    template_name = 'profiles/profile_edit.html'
 
 def my_profile(request, username): 
     username = request.user.username
