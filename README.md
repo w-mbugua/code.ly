@@ -24,7 +24,9 @@ A user can:
 ## Demo
 
 Here is a working live demo : <https://codely-awards.herokuapp.com/>
+#
 [Figma](https://www.figma.com/file/IU2rCP0ekd7P8cztS28w1s/Codely.io?node-id=0%3A1)
+#
 [ERD](https://lucid.app/lucidchart/f3bc30d1-4edd-4da5-8f58-3af1c427f50c/edit?beaconFlowId=88584C51AD82AA46&invitationId=inv_63f88b8b-9054-486f-aaf3-6bb246f0e891&page=0_0#)
 
 ## Mobile support
