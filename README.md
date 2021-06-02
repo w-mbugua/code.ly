@@ -19,8 +19,8 @@ A user can:
 ## API Endpoints
 | Task | View| Response |
 | :---         |     :---:      |          ---: |
-| Profiles - `GET`   | `https://codely-awards.herokuapp.com//api/profiles/`      |  All user profiles with info such as username, bio etc   |
-| Projects - `GET`   | `https://codely-awards.herokuapp.com//api/projects/`      |  All the projects posted in the app    |
+| Profiles - `GET`   | `https://codely-awards.herokuapp.com/api/profiles/`      |  All user profiles with info such as username, bio etc   |
+| Projects - `GET`   | `https://codely-awards.herokuapp.com/api/projects/`      |  All the projects posted in the app    |
 ## Demo
 
 Here is a working live demo : <https://codely-awards.herokuapp.com/>
